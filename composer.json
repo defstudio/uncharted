@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "defstudio/uncharted",
+    "description": "An opinionated Laravel wrapper for chartjs",
     "keywords": [
-        ":vendor_name",
+        "defstudio",
         "laravel",
-        ":package_slug"
+        "uncharted"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/defstudio/uncharted",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Fabio Ivona",
+            "email": "fabio.ivona@defstudio.it",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "DefStudio\\Uncharted\\": "src",
+            "DefStudio\\Uncharted\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "DefStudio\\Uncharted\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -60,10 +60,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "DefStudio\\Uncharted\\UnchartedServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "Uncharted": "DefStudio\\Uncharted\\Facades\\Uncharted"
             }
         }
     },
