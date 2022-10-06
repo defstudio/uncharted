@@ -1,10 +1,13 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 
 namespace DefStudio\Uncharted;
 
-use DefStudio\Uncharted\Commands\UnchartedCommand;
+use Illuminate\Contracts\Http\Kernel;
+use DefStudio\Uncharted\Middlewares\InjectChartJsCdn;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use DefStudio\Uncharted\Commands\UnchartedCommand;
 
 class UnchartedServiceProvider extends PackageServiceProvider
 {
@@ -18,8 +21,23 @@ class UnchartedServiceProvider extends PackageServiceProvider
         $package
             ->name('uncharted')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_uncharted_table')
-            ->hasCommand(UnchartedCommand::class);
+            ->hasViews("uncharted")
+            ->hasInstallCommand(fn (InstallCommand $command) => $command
+                ->publishConfigFile()
+                ->askToStarRepoOnGitHub("defstudio/uncharted"));
+
+
+    }
+
+    public function packageBooted(): void
+    {
+        $this->registerMiddleware();
+    }
+
+
+    private function registerMiddleware()
+    {
+        $kernel = $this->app->make(Kernel::class);
+        $kernel->pushMiddleware(InjectChartJsCdn::class);
     }
 }
