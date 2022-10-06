@@ -2,9 +2,9 @@
 
 namespace DefStudio\Uncharted\Tests;
 
+use DefStudio\Uncharted\UnchartedServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use DefStudio\Uncharted\UnchartedServiceProvider;
 
 class TestCase extends Orchestra
 {

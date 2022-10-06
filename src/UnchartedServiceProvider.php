@@ -2,9 +2,9 @@
 
 namespace DefStudio\Uncharted;
 
+use DefStudio\Uncharted\Commands\UnchartedCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use DefStudio\Uncharted\Commands\UnchartedCommand;
 
 class UnchartedServiceProvider extends PackageServiceProvider
 {
