@@ -19,9 +19,10 @@ class Dataset
 
     public function data(int|float|array $data): self
     {
-        foreach (Arr::wrap($data) as $datum){
+        foreach (Arr::wrap($data) as $datum) {
             $this->data[] = $datum;
         }
+
         return $this;
     }
 }

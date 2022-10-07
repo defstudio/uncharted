@@ -6,6 +6,6 @@ class LineChart extends Chart
 {
     public function type(): string
     {
-        return "line";
+        return 'line';
     }
 }

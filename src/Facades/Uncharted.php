@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method LineChart line(Dataset[]|Dataset $datasets)
+ *
  * @see \DefStudio\Uncharted\Uncharted
  */
 class Uncharted extends Facade

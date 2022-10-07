@@ -1,13 +1,14 @@
-<?php /** @noinspection PhpUnhandledExceptionInspection */
+<?php
+
+/** @noinspection PhpUnhandledExceptionInspection */
 
 namespace DefStudio\Uncharted;
 
-use Illuminate\Contracts\Http\Kernel;
 use DefStudio\Uncharted\Middlewares\InjectChartJsCdn;
+use Illuminate\Contracts\Http\Kernel;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use DefStudio\Uncharted\Commands\UnchartedCommand;
 
 class UnchartedServiceProvider extends PackageServiceProvider
 {
@@ -21,19 +22,16 @@ class UnchartedServiceProvider extends PackageServiceProvider
         $package
             ->name('uncharted')
             ->hasConfigFile()
-            ->hasViews("uncharted")
+            ->hasViews('uncharted')
             ->hasInstallCommand(fn (InstallCommand $command) => $command
                 ->publishConfigFile()
-                ->askToStarRepoOnGitHub("defstudio/uncharted"));
-
-
+                ->askToStarRepoOnGitHub('defstudio/uncharted'));
     }
 
     public function packageBooted(): void
     {
         $this->registerMiddleware();
     }
-
 
     private function registerMiddleware()
     {

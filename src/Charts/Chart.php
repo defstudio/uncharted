@@ -3,7 +3,6 @@
 namespace DefStudio\Uncharted\Charts;
 
 use DefStudio\Uncharted\Data\Dataset;
-use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
@@ -20,7 +19,7 @@ abstract class Chart
     private array $options;
 
     /**
-     * @param Dataset[]|Dataset $datasets
+     * @param  Dataset[]|Dataset  $datasets
      */
     public function __construct(array|Dataset $datasets)
     {
@@ -53,11 +52,12 @@ abstract class Chart
     }
 
     /**
-     * @param string[] $labels
+     * @param  string[]  $labels
      */
     public function labels(array $labels): self
     {
         $this->labels = $labels;
+
         return $this;
     }
 
