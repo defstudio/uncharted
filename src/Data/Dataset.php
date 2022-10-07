@@ -17,7 +17,7 @@ class Dataset
         return new self($label);
     }
 
-    public function addData(int|float|array $data): self
+    public function data(int|float|array $data): self
     {
         foreach (Arr::wrap($data) as $datum){
             $this->data[] = $datum;

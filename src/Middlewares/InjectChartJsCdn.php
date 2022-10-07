@@ -17,11 +17,6 @@ class InjectChartJsCdn
     {
         $response = $next($request);
 
-        $cdn = config('uncharted.cdn');
-        if ($cdn === null) {
-            return $response;
-        }
-
         if($response->isRedirection())
             return $response;
 
@@ -34,9 +29,17 @@ class InjectChartJsCdn
 
         $content = $response->getContent();
         if(str($content)->contains("</head>")){
-            $content = str($content)->replaceFirst("</head>", "<script src='$cdn'></script></head>")->toString();
-            $response->setContent($content);
-            $response->headers->remove('Content-Length');
+            $scripts = collect(config('uncharted.cdn'))
+                ->filter()
+                ->map(fn(string $cdnAddress) => "<script src='$cdnAddress'></script>")
+                ->join('');
+
+            if(!empty($scripts)){
+                $content = str($content)->replaceFirst("</head>", "$scripts</head>")->toString();
+                $response->setContent($content);
+                $response->headers->remove('Content-Length');
+            }
+
         }
 
         return $response;

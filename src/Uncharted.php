@@ -3,6 +3,7 @@
 namespace DefStudio\Uncharted;
 
 
+use DefStudio\Uncharted\Charts\Chart;
 use DefStudio\Uncharted\Charts\LineChart;
 use DefStudio\Uncharted\Data\Dataset;
 use Illuminate\Support\HtmlString;
@@ -11,11 +12,9 @@ class Uncharted
 {
     /**
      * @param Dataset[]|Dataset $datasets
-     *
-     * @return HtmlString
      */
-    public function line(array|Dataset $datasets): HtmlString
+    public function line(array|Dataset $datasets): LineChart
     {
-        return new HtmlString(view('uncharted::chart')->with('chart', new LineChart($datasets)));
+        return new LineChart($datasets);
     }
 }
