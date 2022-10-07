@@ -3,6 +3,7 @@
 namespace DefStudio\Uncharted\Charts;
 
 use DefStudio\Uncharted\Data\Dataset;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
@@ -16,14 +17,16 @@ abstract class Chart
     private array $labels;
 
     /** @var array<string, mixed> */
-    private array $options;
+    private array $options = [];
 
     /**
-     * @param  Dataset[]|Dataset  $datasets
+     * @param Dataset[]|Collection<int, Dataset>|Dataset $datasets
      */
-    public function __construct(array|Dataset $datasets)
+    public function __construct(array|Collection|Dataset $datasets)
     {
-        $this->datasets = Collection::make(Arr::wrap($datasets))->values();
+        $this->datasets = $datasets instanceof Collection
+            ? $datasets
+            : Collection::make(Arr::wrap($datasets));
     }
 
     abstract protected function type(): string;
@@ -31,10 +34,7 @@ abstract class Chart
     private function data(): array
     {
         return collect([
-            'datasets' => $this->datasets->map(fn (Dataset $dataset) => [
-                'label' => $dataset->label,
-                'data' => $dataset->data,
-            ]),
+            'datasets' => $this->datasets->map(fn (Dataset $dataset) => $dataset->config()),
         ])->when(isset($this->labels), fn (Collection $collection) => $collection->put('labels', $this->labels))
             ->toArray();
     }
@@ -52,12 +52,11 @@ abstract class Chart
     }
 
     /**
-     * @param  string[]  $labels
+     * @param string[] $labels
      */
     public function labels(array $labels): self
     {
         $this->labels = $labels;
-
         return $this;
     }
 
