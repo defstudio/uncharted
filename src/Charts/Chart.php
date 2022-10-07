@@ -69,8 +69,8 @@ abstract class Chart
         ];
     }
 
-    public function render(): HtmlString
+    public function render(int $width, int $height): HtmlString
     {
-        return new HtmlString(view('uncharted::chart')->with('chart', $this));
+        return new HtmlString(view('uncharted::chart')->with('chart', $this)->with('width', $width)->with('height', $height));
     }
 }
