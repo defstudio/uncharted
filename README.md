@@ -1,8 +1,8 @@
 # An opinionated Laravel wrapper for chartjs
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/defstudio/uncharted.svg?style=flat-square)](https://packagist.org/packages/defstudio/uncharted)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/defstudio/uncharted/run-tests?label=tests)](https://github.com/defstudio/uncharted/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/defstudio/uncharted/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/defstudio/uncharted/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/defstudio/uncharted/run-tests.yml?branch=main&label=tests)](https://github.com/defstudio/uncharted/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/defstudio/uncharted/fix-php-code-style-issues.yml?branch=main&label=code%20style)](https://github.com/defstudio/uncharted/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/defstudio/uncharted.svg?style=flat-square)](https://packagist.org/packages/defstudio/uncharted)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
