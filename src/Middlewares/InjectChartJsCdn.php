@@ -9,8 +9,6 @@ class InjectChartJsCdn
 {
     /**
      * @param  Request  $request
-     * @param  Closure  $next
-     * @return mixed
      */
     public function handle($request, Closure $next): mixed
     {
