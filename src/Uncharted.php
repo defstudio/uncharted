@@ -2,6 +2,7 @@
 
 namespace DefStudio\Uncharted;
 
+use DefStudio\Uncharted\Charts\BarsChart;
 use DefStudio\Uncharted\Charts\LineChart;
 use DefStudio\Uncharted\Charts\RadarChart;
 use DefStudio\Uncharted\Data\Dataset;
@@ -20,5 +21,10 @@ class Uncharted
     public function radar(array|Collection|Dataset $datasets): RadarChart
     {
         return new RadarChart($datasets);
+    }
+
+    public function bars(array|Collection|Dataset $datasets): BarsChart
+    {
+        return new BarsChart($datasets);
     }
 }

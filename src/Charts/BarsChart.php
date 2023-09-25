@@ -2,7 +2,7 @@
 
 namespace DefStudio\Uncharted\Charts;
 
-class BarChart extends Chart
+class BarsChart extends Chart
 {
     public function type(): string
     {
