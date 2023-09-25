@@ -16,7 +16,7 @@ abstract class Chart
     private array $labels;
 
     /** @var array<string, mixed> */
-    private array $options = [];
+    private array $options = ['foo' => 'bar'];
 
     /**
      * @param  Dataset[]|Collection<int, Dataset>|Dataset  $datasets
