@@ -49,7 +49,7 @@ abstract class Chart
 
     public function max(float $number, string $axis = null): self
     {
-        $axis ??= match ($this::class){
+        $axis ??= match ($this::class) {
             RadarChart::class => 'r',
             default => 'x'
         };
@@ -61,7 +61,7 @@ abstract class Chart
 
     public function min(float $number, string $axis = null): self
     {
-        $axis ??= match ($this::class){
+        $axis ??= match ($this::class) {
             RadarChart::class => 'r',
             default => 'x'
         };
