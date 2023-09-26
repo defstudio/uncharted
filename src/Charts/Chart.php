@@ -50,6 +50,10 @@ abstract class Chart
         return $this;
     }
 
+    public function maintainAspectRatio(bool $enable = true){
+        $this->options['maintainAspectRatio'] = $enable;
+    }
+
     /**
      * @param  string[]  $labels
      */
