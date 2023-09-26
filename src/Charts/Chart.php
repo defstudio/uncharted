@@ -38,14 +38,24 @@ abstract class Chart
             ->toArray();
     }
 
-    public function time(string $unit): self
+    public function time(string $unit, string $axis = 'x'): self
     {
-        $this->options['scales']['x'] = [
-            'type' => 'time',
-            'time' => [
-                'unit' => $unit,
-            ],
-        ];
+        data_set($this->options, "scales.$axis.type", 'time');
+        data_set($this->options, "scales.$axis.time.unit", $unit);
+
+        return $this;
+    }
+
+    public function max(float $number, string $axis): self
+    {
+        data_set($this->options, "scales.$axis.max", $number);
+
+        return $this;
+    }
+
+    public function min(float $number, string $axis): self
+    {
+        data_set($this->options, "scales.$axis.min", $number);
 
         return $this;
     }
