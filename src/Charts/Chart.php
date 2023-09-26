@@ -60,9 +60,11 @@ abstract class Chart
         return $this;
     }
 
-    public function maintainAspectRatio(bool $enable = true)
+    public function maintainAspectRatio(bool $enable = true): self
     {
         $this->options['maintainAspectRatio'] = $enable;
+
+        return $this;
     }
 
     /**
