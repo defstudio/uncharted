@@ -40,31 +40,45 @@ abstract class Chart
 
     public function time(string $unit, string $axis = 'x'): self
     {
-        data_set($this->options, "scales.$axis.type", 'time');
-        data_set($this->options, "scales.$axis.time.unit", $unit);
+        return $this
+            ->option("scales.$axis.type", 'time')
+            ->option("scales.$axis.time.unit", $unit);
 
         return $this;
     }
 
-    public function max(float $number, string $axis): self
+    public function max(float $number, string $axis = null): self
     {
-        data_set($this->options, "scales.$axis.max", $number);
+        $axis ??= match ($this::class){
+            RadarChart::class => 'r',
+            default => 'x'
+        };
+
+        return $this->option("scales.$axis.max", $number);
 
         return $this;
     }
 
-    public function min(float $number, string $axis): self
+    public function min(float $number, string $axis = null): self
     {
-        data_set($this->options, "scales.$axis.min", $number);
+        $axis ??= match ($this::class){
+            RadarChart::class => 'r',
+            default => 'x'
+        };
+
+        return $this->option("scales.$axis.min", $number);
+    }
+
+    public function option(string $key, mixed $value): self
+    {
+        data_set($this->options, $key, $value);
 
         return $this;
     }
 
     public function maintainAspectRatio(bool $enable = true): self
     {
-        $this->options['maintainAspectRatio'] = $enable;
-
-        return $this;
+        return $this->option('maintainAspectRatio', $enable);
     }
 
     /**
