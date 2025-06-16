@@ -17,9 +17,7 @@ class Dataset
 
     private float $tension = 1.0;
 
-    private function __construct(private readonly string $label)
-    {
-    }
+    private function __construct(private readonly string $label) {}
 
     public static function make(string $label): self
     {
